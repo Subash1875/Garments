@@ -1,0 +1,290 @@
+body {
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+nav {
+  width: 250px;
+  inset: 0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: #fff;
+  transition: 0.6s;
+  z-index: 9999;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.fa-plus {
+  background-color: orangered;
+  height: 25px;
+  width: 25px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+}
+
+i {
+  cursor: pointer;
+}
+
+.nav-li {
+  height: 40px;
+}
+
+nav ul {
+  gap: 30px;
+  margin: 50px 0;
+}
+
+.nav-hover {
+  transition: 0.8s;
+}
+
+.nav-hover li {
+  color: #fff;
+}
+
+.nav-hover:hover {
+  background-color: #fff;
+}
+
+.nav-hover:hover li {
+  color: #000;
+}
+
+.nav-hover:hover span {
+  color: orangered;
+}
+
+#mobile-nav-icon {
+  position: fixed;
+  right: 2%;
+  top: 2%;
+  cursor: pointer;
+  background-color: dodgerblue;
+  z-index: 9999;
+  color: #fff;
+  height: 35px;
+  width: 35px;
+  display: none;
+  place-items: center;
+}
+
+main {
+  position: absolute;
+  width: calc(100vw - 250px);
+  left: 250px;
+  transition: 0.6s;
+}
+
+@media screen and (max-width: 992px) {
+  main {
+    width: 100vw !important;
+    inset: 0;
+  }
+  #mobile-nav-icon {
+    display: grid !important;
+  }
+  .search-results {
+    margin: 20px 0;
+  }
+  .logout-popup {
+    width: 100vw !important;
+    inset: 0 !important;
+  }
+  .logout-container {
+    width: 280px !important;
+  }
+  .bill-delete-popup {
+    width: 100vw !important;
+    left: 0 !important;
+  }
+}
+
+#loading {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background-color: #ddd;
+  opacity: 0.7;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 transparent;
+  border: 1px solid black;
+}
+
+.error-form-color {
+  border: 1px solid red;
+}
+
+.error-label {
+  color: red;
+}
+
+.logout-popup {
+  position: fixed;
+  height: 100vh;
+  width: calc(100vw - 250px);
+  left: 250px;
+  display: grid;
+  place-items: center;
+  transition: 0.6s;
+  z-index: 9999;
+}
+
+.logout-container {
+  width: 430px;
+  height: 200px;
+}
+
+.cancel-btn:hover {
+  box-shadow: 0 0 10px #ddd;
+}
+
+.credentials {
+  height: 60px;
+  margin: 15px 0;
+}
+
+.companies {
+  transition: 0.4s;
+}
+
+.companies:hover .hover-color {
+  color: orangered;
+}
+
+.fa-pencil,
+.fa-floppy-disk {
+  background-color: #ddd;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+
+.user-border-style {
+  border-bottom: 5px solid orangered;
+}
+
+table tr td {
+  padding: 10px 5px;
+}
+
+#spinner-loading {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 5px dotted black;
+  border-top: 5px dotted transparent;
+  animation: spinner 0.6s infinite ease;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#bill-container {
+  width: 230mm;
+}
+
+.table-border {
+  border: 2px solid #ddd;
+  padding: 7px;
+}
+
+.companyName {
+  transition: 0.4s;
+}
+
+.bills:hover .companyName {
+  color: orangered;
+  transform: translateX(30px);
+}
+
+.company-edit-page {
+  width: 300px;
+  height: 100vh;
+  background-color: #ddd;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.bill-delete-icon {
+  background-color: #ddd;
+  color: black;
+  height: 40px;
+  width: 40px;
+  display: grid;
+  place-items: center;
+  transition: 0.3s;
+}
+
+.bill-delete-icon:hover {
+  color: white;
+  background-color: red;
+}
+
+.bill-delete-popup {
+  height: 100vh;
+  width: calc(100vw - 250px);
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 250px;
+  display: grid;
+  place-items: center;
+}
+
+.bill-delete-container {
+  width: 450px;
+  height: 200px;
+}
+
+.print-icon {
+  background-color: #ddd;
+  color: black;
+  height: 40px;
+  width: 40px;
+  display: grid;
+  place-items: center;
+  transition: 0.3s;
+}
+
+.print-icon:hover {
+  color: white;
+  background-color: green;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  #main-bill-container {
+    margin-top: 50px;
+    width: 120vw !important;
+  }
+}
