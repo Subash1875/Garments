@@ -32,7 +32,7 @@ MongoDb();
 
 const limiter = rateLimiter({
   windowMs: 1 * 60 * 1000,
-  max: 20,
+  max: 30,
   message: "too many requests, try again after a minute"
 })
 

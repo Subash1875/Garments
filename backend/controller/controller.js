@@ -46,16 +46,15 @@ const getCompanies = async (req, res) => {
 };
 
 const userBills = async (req, res) => {
-  const { page, billsPerPage } = req.query;
-  const skipCount = (page - 1) * billsPerPage;
-  const limitCount = page * billsPerPage;
+  const { page, limit } = req.query;
+  const skipCount = (page - 1) * limit;
   const user = req.user;
   try {
     const bills = await UserBills.find({ user })
       .sort("-createdAt")
       .select("company createdAt invoiceNo")
       .skip(skipCount)
-      .limit(limitCount);
+      .limit(limit);
     res.status(200).json({ bills });
   } catch (err) {
     res.status(400).json({ msg: "an error occured. please try again" });
@@ -82,12 +81,12 @@ const singleBill = async (req, res) => {
 const singleCompany = async (req, res) => {
   const user = req.user;
   const { companyName } = req.params;
-  
+
   try {
     const singleCompany = await UserCompanies.findOne({
       user,
       "company.CompanyName": companyName,
-    });    
+    });
 
     if (!singleCompany) {
       res
