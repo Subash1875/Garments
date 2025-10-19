@@ -123,9 +123,6 @@ const Nav = () => {
               <span>Logout</span>
             </li>
           </div>
-          <li className="my-5 text-center">
-            <span>Copyright &copy; kevin 2024</span>
-          </li>
         </ul>
       </nav>
 
