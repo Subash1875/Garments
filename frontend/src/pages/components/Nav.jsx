@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLogout } from "../../hooks/AuthHooks/useLogout";
+import axios from "axios";
 
 const Nav = () => {
   const user = localStorage.getItem("user");
@@ -27,10 +27,17 @@ const Nav = () => {
     },
   ];
 
-  const { logout } = useLogout();
-
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    try {
+      await axios.get(`${process.env.REACT_APP_API}/user/logout`, {
+        headers: { authorization: localStorage.getItem("token") },
+      });
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.href = "/";
+    } catch (error) {
+      alert(error?.response?.data?.message);
+    }
   };
 
   const [Nav, setNav] = useState(

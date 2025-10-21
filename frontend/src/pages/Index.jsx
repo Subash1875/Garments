@@ -25,8 +25,6 @@ const Index = () => {
         return;
       }
 
-      console.log(response);
-
       setPage((prev) => prev + 1);
       setBills((prev) => [...prev, ...newBills]);
     } catch (error) {

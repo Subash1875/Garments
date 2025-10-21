@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const requireAuth = require("./middleware/requireAuth");
-const rateLimiter = require("express-rate-limit")
+const rateLimiter = require("express-rate-limit");
 
 const controller = require("./controller/controller");
 const authController = require("./controller/authController/authController");
@@ -29,12 +29,11 @@ const MongoDb = async () => {
 };
 MongoDb();
 
-
 const limiter = rateLimiter({
   windowMs: 1 * 60 * 1000,
   max: 30,
-  message: "too many requests, try again after a minute"
-})
+  message: "too many requests, try again after a minute",
+});
 
 //Middlewares
 app.use(cors());
@@ -48,6 +47,7 @@ app.use(limiter);
 //auth routes
 app.post("/user/signup", authController.Signup);
 app.post("/user/login", authController.Login);
+app.get("/user/logout", authController.Logout);
 
 app.get("/", controller.Index);
 app.get("/user/user-companies", requireAuth, controller.getUserCompanies);
@@ -64,7 +64,6 @@ app.post(
   "/user/:company/edit-companies",
   requireAuth,
   GarmentController.EditCompany
-
 );
 
 //bill routes

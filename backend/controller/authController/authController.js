@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const Users = require("../../models/User");
 const userCredentials = require("../../models/userCredentials");
+const redisClient = require("../../Redis");
 
 //json web token
 const createToken = (_id) => {
@@ -35,7 +36,18 @@ const Login = async (req, res) => {
   }
 };
 
+const Logout = async (req, res) => {
+  const cacheKey = `auth:${req.headers.authorization}`;
+  try {
+    await redisClient.del(cacheKey);
+    res.status(200).json({ message: "logged out" });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 module.exports = {
   Signup,
   Login,
+  Logout,
 };
