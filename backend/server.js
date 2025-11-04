@@ -22,6 +22,7 @@ const MongoDb = async () => {
     app.listen(PORT);
     console.log("Connection established with MongoDb");
   } catch (err) {
+    console.log(err);
     setTimeout(() => {
       MongoDb();
     }, 5000);
